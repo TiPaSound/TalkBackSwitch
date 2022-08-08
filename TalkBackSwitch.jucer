@@ -2,13 +2,15 @@
 
 <JUCERPROJECT id="lYGYG6" name="TalkBackSwitch" projectType="guiapp" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
-              companyWebsite="http://tipasound.de">
+              companyWebsite="http://tipasound.de" companyName="TiPaSound">
   <MAINGROUP id="o9chjh" name="TalkBackSwitch">
     <GROUP id="{4A5D7037-13B9-049E-4930-D163143EB7F7}" name="Source">
       <FILE id="RilMSr" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="CITtJA" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="tsRruy" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
+      <FILE id="hcrNko" name="UiHandling.cpp" compile="1" resource="0" file="Source/UiHandling.cpp"/>
+      <FILE id="C0dn62" name="UiHandling.h" compile="0" resource="0" file="Source/UiHandling.h"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
@@ -20,10 +22,10 @@
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="..\..\Programme\JUCE_7\JUCE\modules"/>
-        <MODULEPATH id="juce_data_structures" path="..\..\..\Programme\JUCE_7\JUCE\modules"/>
-        <MODULEPATH id="juce_events" path="..\..\..\Programme\JUCE_7\JUCE\modules"/>
-        <MODULEPATH id="juce_graphics" path="..\..\..\Programme\JUCE_7\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_basics" path="..\..\..\Programme\JUCE_7\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\..\Programme\JUCE_7\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="..\..\Programme\JUCE_7\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\..\Programme\JUCE_7\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\..\Programme\JUCE_7\JUCE\modules"/>
       </MODULEPATHS>
     </VS2019>
   </EXPORTFORMATS>

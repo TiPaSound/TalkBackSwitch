@@ -55,6 +55,8 @@ void MainComponent::SetMuteStateOnButton()
 
 void MainComponent::SwitchMuteOnUi()
 {
+    m_ui.SetMuted(1);
+    
     if (MuteState_Muted == m_muteState)
     {
         // set unmute

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "UiHandling.h"
+
 
 //==============================================================================
 /*
@@ -34,6 +36,7 @@ private:
 
     juce::TextButton m_btnMute{"Mute"};;
     MuteState m_muteState;
+    UiHandling m_ui;
 
     void OnMuteButton();
     void SetMuteStateOnButton();
