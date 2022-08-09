@@ -21,7 +21,7 @@ public:
     bool moreThanOneInstanceAllowed() override             { return true; }
 
     //==============================================================================
-    void initialise (const juce::String& commandLine) override
+    void initialise (const juce::String& /*commandLine*/) override
     {
         // This method is where you should put your application's initialisation code..
 
@@ -43,7 +43,7 @@ public:
         quit();
     }
 
-    void anotherInstanceStarted (const juce::String& commandLine) override
+    void anotherInstanceStarted (const juce::String& /*commandLine*/) override
     {
         // When another instance of the app is launched while this one is running,
         // this method is invoked, and the commandLine parameter tells you what
@@ -62,19 +62,21 @@ public:
             : DocumentWindow (name,
                               juce::Desktop::getInstance().getDefaultLookAndFeel()
                                                           .findColour (juce::ResizableWindow::backgroundColourId),
-                              DocumentWindow::allButtons)
+                              DocumentWindow::closeButton)
         {
-            setUsingNativeTitleBar (true);
+            setUsingNativeTitleBar (false);
+            setTitleBarHeight(10);
             setContentOwned (new MainComponent(), true);
 
            #if JUCE_IOS || JUCE_ANDROID
-            setFullScreen (true);
+            setFullScreen (false);
            #else
-            setResizable (true, true);
+            setResizable (false, false);
             centreWithSize (getWidth(), getHeight());
            #endif
 
             setVisible (true);
+            setAlwaysOnTop(true);
         }
 
         void closeButtonPressed() override

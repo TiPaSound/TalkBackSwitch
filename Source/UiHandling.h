@@ -12,7 +12,7 @@
 
 #include <JuceHeader.h>
 
-class UiHandling : public juce::Timer
+class UiHandling : public juce::Thread
 {
 public: 
     UiHandling();
@@ -26,11 +26,17 @@ private:
 #define IPADDRESS   "10.10.2.2"
 #define PORT        80
 
-    void Connect();
+    bool Connect();
     void Disconnect();
     void WatchdogUi();
-    void timerCallback() override;
+    void ReadMuted();
+    void run() override;
 
     juce::StreamingSocket* m_pSocket;
+    juce::int64 m_nWatchdog;
+    juce::int64 m_nWatchdogInit;
+    bool m_muted;
+    bool m_stopThread;
+
 
 };

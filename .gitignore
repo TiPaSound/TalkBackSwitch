@@ -49,3 +49,5 @@ Builds/VisualStudio2019/.vs/TalkBackSwitch/v16/Browse.VC.db-wal
 Builds/VisualStudio2019/.vs/TalkBackSwitch/v16/Browse.VC.db-shm
 Builds/VisualStudio2019/x64/Debug/App/UiHandling.obj
 Builds/VisualStudio2019/.vs/TalkBackSwitch/v16/ipch/AutoPCH/7378b3cc71760715/UIHANDLING.ipch
+Builds/VisualStudio2019/.vs/TalkBackSwitch/v16/ipch/AutoPCH/fc485ac0a55410f8/INCLUDE_JUCE_EVENTS.ipch
+Builds/VisualStudio2019/.vs/TalkBackSwitch/v16/ipch/AutoPCH/5c52f85b831c6f06/INCLUDE_JUCE_CORE.ipch

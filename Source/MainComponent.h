@@ -13,15 +13,9 @@
 #define MUTE_CHANNEL    1
 
 
-class MainComponent  : public juce::Component
+class MainComponent  : public juce::Component, public juce::Timer
 {
 public:
-
-    enum MuteState
-    {
-        MuteState_Muted = 1,
-        MuteState_Unmuted
-    };
     //==============================================================================
     MainComponent();
     ~MainComponent() override;
@@ -35,12 +29,13 @@ private:
     // Your private member variables go here...
 
     juce::TextButton m_btnMute{"Mute"};;
-    MuteState m_muteState;
     UiHandling m_ui;
+    bool m_muted;
 
     void OnMuteButton();
-    void SetMuteStateOnButton();
+    void SetMuteStateOnButton(bool muted);
     void SwitchMuteOnUi();
+    void timerCallback() override;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

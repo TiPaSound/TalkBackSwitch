@@ -2,13 +2,15 @@
 
 //==============================================================================
 MainComponent::MainComponent()
+    :m_muted(false)
 {
     m_btnMute.onClick = [this] {OnMuteButton(); };
     addAndMakeVisible(m_btnMute);
 
-    m_muteState = MuteState::MuteState_Muted;
-
-    setSize (100, 100);
+    setSize (75, 75);
+    startTimer(300);
+    SetMuteStateOnButton(m_muted);
+    
 }
 
 MainComponent::~MainComponent()
@@ -41,11 +43,11 @@ void MainComponent::OnMuteButton()
     SwitchMuteOnUi();
 }
 
-void MainComponent::SetMuteStateOnButton()
+void MainComponent::SetMuteStateOnButton(bool muted)
 {
-    if (MuteState_Muted == m_muteState)
+    if (false == muted)
     {
-        m_btnMute.setColour(juce::TextButton::ColourIds::buttonColourId, juce::Colours::darkseagreen);
+        m_btnMute.setColour(juce::TextButton::ColourIds::buttonColourId, juce::Colours::darkgreen);
     }
     else
     {
@@ -57,12 +59,24 @@ void MainComponent::SwitchMuteOnUi()
 {
     m_ui.SetMuted(1);
     
-    if (MuteState_Muted == m_muteState)
+    if (true == m_muted)
     {
         // set unmute
+        m_ui.SetUnmuted(1);
     }
     else
     {
         //set mute
+        m_ui.SetMuted(1);
+    }
+}
+
+void MainComponent::timerCallback()
+{
+    bool muted = m_ui.GetMuted(1);
+    if (m_muted != muted)
+    {
+        m_muted = muted;
+        SetMuteStateOnButton(m_muted);
     }
 }
