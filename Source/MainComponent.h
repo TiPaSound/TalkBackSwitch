@@ -15,6 +15,13 @@
 
 class MainComponent  : public juce::Component, public juce::Timer
 {
+    enum MuteState
+    {
+        MUTE_NONE = 0,
+        MUTED,
+        UNMUTED
+    };
+
 public:
     //==============================================================================
     MainComponent();
@@ -30,10 +37,10 @@ private:
 
     juce::TextButton m_btnMute{"Mute"};;
     UiHandling m_ui;
-    bool m_muted;
+    MuteState m_muted;
 
     void OnMuteButton();
-    void SetMuteStateOnButton(bool muted);
+    void SetMuteStateOnButton(MuteState ms);
     void SwitchMuteOnUi();
     void timerCallback() override;
 

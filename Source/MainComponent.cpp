@@ -2,15 +2,14 @@
 
 //==============================================================================
 MainComponent::MainComponent()
-    :m_muted(false)
+    :m_muted(MUTE_NONE)
 {
     m_btnMute.onClick = [this] {OnMuteButton(); };
     addAndMakeVisible(m_btnMute);
 
-    setSize (75, 75);
-    startTimer(300);
-    SetMuteStateOnButton(m_muted);
-    
+    setSize (100, 100);
+    startTimer(200);
+   
 }
 
 MainComponent::~MainComponent()
@@ -18,14 +17,13 @@ MainComponent::~MainComponent()
 }
 
 //==============================================================================
-void MainComponent::paint (juce::Graphics& g)
+void MainComponent::paint(juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 
-    g.setFont (juce::Font (16.0f));
-    g.setColour (juce::Colours::white);
-    //g.drawText ("Hello World!", getLocalBounds(), juce::Justification::centred, true);
+    g.setFont(juce::Font(16.0f));
+    g.setColour(juce::Colours::white);
 }
 
 void MainComponent::resized()
@@ -43,9 +41,9 @@ void MainComponent::OnMuteButton()
     SwitchMuteOnUi();
 }
 
-void MainComponent::SetMuteStateOnButton(bool muted)
+void MainComponent::SetMuteStateOnButton(MuteState ms)
 {
-    if (false == muted)
+    if (UNMUTED == ms)
     {
         m_btnMute.setColour(juce::TextButton::ColourIds::buttonColourId, juce::Colours::darkgreen);
     }
@@ -57,9 +55,8 @@ void MainComponent::SetMuteStateOnButton(bool muted)
 
 void MainComponent::SwitchMuteOnUi()
 {
-    m_ui.SetMuted(1);
     
-    if (true == m_muted)
+    if (MUTED == m_muted)
     {
         // set unmute
         m_ui.SetUnmuted(1);
@@ -74,9 +71,15 @@ void MainComponent::SwitchMuteOnUi()
 void MainComponent::timerCallback()
 {
     bool muted = m_ui.GetMuted(1);
-    if (m_muted != muted)
+    MuteState ms = MUTE_NONE;
+    if (muted)
+        ms = MUTED;
+    else
+        ms = UNMUTED;
+
+    if (ms != m_muted)
     {
-        m_muted = muted;
+        m_muted = ms;
         SetMuteStateOnButton(m_muted);
     }
 }

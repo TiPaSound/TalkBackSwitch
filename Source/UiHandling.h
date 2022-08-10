@@ -25,6 +25,7 @@ public:
 private:
 #define IPADDRESS   "10.10.2.2"
 #define PORT        80
+#define MAX_BUFFER  1024
 
     bool Connect();
     void Disconnect();
@@ -32,7 +33,8 @@ private:
     void ReadMuted();
     void run() override;
 
-    juce::StreamingSocket* m_pSocket;
+    juce::StreamingSocket* m_pSocketReceiver;
+    juce::StreamingSocket* m_pSocketSender;
     juce::int64 m_nWatchdog;
     juce::int64 m_nWatchdogInit;
     bool m_muted;

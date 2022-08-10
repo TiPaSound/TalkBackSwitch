@@ -65,7 +65,7 @@ public:
                               DocumentWindow::closeButton)
         {
             setUsingNativeTitleBar (false);
-            setTitleBarHeight(10);
+            setTitleBarHeight(15);
             setContentOwned (new MainComponent(), true);
 
            #if JUCE_IOS || JUCE_ANDROID
